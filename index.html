@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training Resources</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ─── RESET & BASE ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+:root {
+  --blue:        #0070b9;
+  --blue-dark:   #004e82;
+  --blue-mid:    rgba(0,112,185,0.55);
+  --blue-soft:   rgba(0,112,185,0.12);
+  --blue-ghost:  rgba(0,112,185,0.06);
+  --ink:         #333e4e;
+  --ink-light:   #666;
+  --rule:        #e5e8ec;
+  --white:       #ffffff;
+  --radius:      10px;
+  --transition:  0.22s ease;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--ink);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-wrap { width: 100%; padding: 0; }
+
+/* ─── SECTION ──────────────────────────────────────────────────────── */
+.section { padding: 20px 0 92px; }
+.section + .section { border-top: 1.5px solid var(--rule); }
+
+/* ─── SECTION HEADER ───────────────────────────────────────────────── */
+.section-head { margin-bottom: 10px; }
+.section-head.centered { text-align: center; }
+
+.section-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 3.2vw, 40px);
+  font-weight: 700;
+  color: var(--blue-dark);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.section-head.centered h2 { justify-content: center; }
+
+.head-icon {
+  width: clamp(34px, 4vw, 56px);
+  height: clamp(34px, 4vw, 56px);
+  opacity: 0.20;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transform: rotate(-6deg);
+}
+.head-icon path, .head-icon rect, .head-icon circle, .head-icon line, .head-icon polygon {
+  stroke: var(--blue);
+}
+
+.section-sub {
+  font-size: clamp(13px, 1.2vw, 15px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.65;
+  margin-top: 6px;
+  font-style: italic;
+  max-width: 760px;
+}
+.section-head.centered .section-sub { margin-left: auto; margin-right: auto; }
+
+/* ─── DIVIDER ──────────────────────────────────────────────────────── */
+.divider {
+  height: 2px;
+  width: 72%;
+  margin: 20px 0 38px 0;
+  background: linear-gradient(to right, rgba(0,112,185,0.9), rgba(0,112,185,0.08));
+  border-radius: 999px;
+  box-shadow: 0 2px 10px rgba(0,112,185,0.14);
+}
+.divider.centered {
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(to right, rgba(0,112,185,0.1), rgba(0,112,185,0.9), rgba(0,112,185,0.1));
+}
+
+.sub-heading {
+  font-size: clamp(15px, 1.5vw, 19px);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 40px 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.sub-heading::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--blue); opacity: 0.45; flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   TEAM  (Meet the Training & Development Team)
+   — matches Office Managers / Marketing / HR exactly
+═══════════════════════════════════════════════════════════════════ */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(14px, 2vw, 24px);
+}
+.team-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid rgba(0,112,185,0.13);
+  background-color: #f3f2f2;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05), 0 1px 4px rgba(0,112,185,0.07);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  min-height: clamp(130px, 14vw, 190px);
+}
+.team-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.09), 0 4px 14px rgba(0,112,185,0.12);
+  border-color: rgba(0,112,185,0.30);
+}
+.team-photo-col {
+  flex-shrink: 0;
+  width: clamp(90px, 11vw, 150px);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #c8dff2 0%, #ddeef8 100%);
+}
+.team-photo-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.team-card:hover .team-photo-col img { transform: scale(1.04); }
+.team-photo-col::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--blue), rgba(0,112,185,0.2));
+  z-index: 2;
+}
+.avatar-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #dde8f4 0%, #eaf2fb 100%);
+}
+.avatar-placeholder svg { width: 46%; height: 46%; opacity: 0.30; }
+.avatar-placeholder svg path, .avatar-placeholder svg circle { stroke: var(--blue-dark); }
+.team-info-col {
+  flex: 1;
+  padding: clamp(16px, 1.8vw, 26px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+.team-name {
+  font-size: clamp(13px, 1.25vw, 16px);
+  font-weight: 600;
+  color: var(--blue);
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+.team-rule {
+  width: 28px; height: 1.5px;
+  background: var(--blue); opacity: 0.30;
+  border-radius: 2px; margin-bottom: 7px; flex-shrink: 0;
+}
+.team-title {
+  font-size: clamp(10px, 0.9vw, 12.5px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.5;
+  opacity: 0.80;
+  margin-bottom: clamp(10px, 1.4vw, 18px);
+}
+.contact-link {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(9px, 0.78vw, 11px);
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color var(--transition);
+  width: fit-content;
+}
+.contact-link:hover { color: var(--blue); }
+.contact-link svg { width: 11px; height: 11px; opacity: 0.50; transition: opacity var(--transition); }
+.contact-link:hover svg { opacity: 1; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   FEATURE BUTTON  (large "Access the Glossary" CTA)
+   — matches the HR Benefits Guide feature button
+═══════════════════════════════════════════════════════════════════ */
+.feature-btn {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1.5px solid rgba(0,112,185,0.16);
+  background: #fff;
+  text-decoration: none;
+  box-shadow: 0 6px 24px rgba(0,42,74,0.07), 0 1px 4px rgba(0,112,185,0.06);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.feature-btn:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0,112,185,0.34);
+  box-shadow: 0 20px 46px rgba(0,42,74,0.13), 0 4px 14px rgba(0,112,185,0.12);
+}
+
+/* ── Left visual panel ── */
+.fb-panel {
+  flex: 0 0 auto;
+  width: clamp(150px, 21vw, 250px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(26px, 3vw, 40px) 0;
+  background: linear-gradient(160deg, #0b2740 0%, #004e82 55%, #0070b9 100%);
+}
+.fb-panel::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(70% 90% at 70% 10%, rgba(255,255,255,0.16), transparent 60%);
+}
+.fb-doc {
+  position: relative;
+  width: clamp(74px, 8.5vw, 104px);
+  height: clamp(94px, 11vw, 132px);
+  z-index: 1;
+}
+.fb-sheet {
+  position: absolute; inset: 0;
+  border-radius: 7px;
+  transition: transform 0.32s ease;
+}
+.fb-sheet-3 {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  transform: rotate(-11deg) translate(-9px, 5px);
+}
+.fb-sheet-2 {
+  background: rgba(255,255,255,0.26);
+  border: 1px solid rgba(255,255,255,0.30);
+  transform: rotate(-5.5deg) translate(-4px, 2px);
+}
+.fb-sheet-1 {
+  background: #fff;
+  border: 1px solid rgba(255,255,255,0.9);
+  box-shadow: 0 8px 20px rgba(4,24,40,0.28);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 clamp(12px, 1.4vw, 17px);
+}
+.feature-btn:hover .fb-sheet-3 { transform: rotate(-15deg) translate(-14px, 7px); }
+.feature-btn:hover .fb-sheet-2 { transform: rotate(-8deg) translate(-7px, 3px); }
+.feature-btn:hover .fb-sheet-1 { transform: translateY(-3px); }
+
+.fb-line {
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(0,112,185,0.30);
+}
+.fb-line-title {
+  height: 6px;
+  width: 66%;
+  background: var(--blue);
+  margin-bottom: 4px;
+}
+.fb-line-short { width: 58%; }
+
+/* ── Right content ── */
+.fb-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(26px, 3.2vw, 46px) clamp(24px, 3vw, 46px);
+  background: #f9f8f6;
+}
+.fb-kicker, .fb-title, .fb-desc { display: block; }
+
+.fb-kicker {
+  display: flex !important;
+  align-items: center;
+  gap: 9px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue);
+  line-height: 1;
+  margin-bottom: 13px;
+}
+.fb-kicker::before {
+  content: '';
+  width: 22px; height: 1.5px;
+  border-radius: 2px;
+  background: var(--blue);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+.fb-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(23px, 2.6vw, 33px);
+  font-weight: 700;
+  color: var(--blue-dark);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 10px;
+}
+.fb-desc {
+  font-size: clamp(11.5px, 1vw, 13.5px);
+  font-weight: 300;
+  color: var(--ink-light);
+  line-height: 1.68;
+  max-width: 56ch;
+  margin-bottom: clamp(18px, 2vw, 26px);
+}
+.fb-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  padding: 13px 24px;
+  border-radius: 10px;
+  background: var(--blue);
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(11.5px, 1vw, 13px);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #fff;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(0,112,185,0.26);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.feature-btn:hover .fb-cta {
+  background: var(--blue-dark);
+  transform: translateX(3px);
+  box-shadow: 0 10px 24px rgba(0,112,185,0.32);
+}
+.fb-cta svg { width: 12px; height: 12px; }
+.fb-cta svg path { stroke: #fff; }
+
+@media (max-width: 760px) {
+  .feature-btn { flex-direction: column; }
+  .fb-panel { width: 100%; padding: 34px 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   BUTTON GRID  (additional videos)
+═══════════════════════════════════════════════════════════════════ */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(8px, 1.2vw, 16px);
+}
+.link-btn {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 0.9vw, 12px);
+  width: 100%;
+  padding: clamp(12px, 1.3vw, 18px) clamp(12px, 1.5vw, 20px);
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(11px, 1.05vw, 14px);
+  font-weight: 500;
+  color: var(--white);
+  text-decoration: none;
+  background: var(--blue);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0,112,185,0.2);
+  transition: transform var(--transition), border-color var(--transition),
+              box-shadow var(--transition), background var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.link-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.link-btn:hover::before { opacity: 1; }
+.link-btn:hover {
+  transform: translateY(-3px);
+  background: var(--blue-dark);
+  border-color: transparent;
+  color: var(--white);
+  box-shadow: 0 8px 24px rgba(0,112,185,0.3);
+}
+.link-icon {
+  flex-shrink: 0;
+  width: clamp(26px, 1.9vw, 30px);
+  height: clamp(26px, 1.9vw, 30px);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.link-icon svg { width: 100%; height: 100%; opacity: 0.85; transition: opacity var(--transition); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); }
+.link-icon svg path, .link-icon svg rect, .link-icon svg circle, .link-icon svg line, .link-icon svg polygon { stroke: var(--white); }
+.link-btn:hover .link-icon svg { opacity: 1; }
+.link-label { position: relative; z-index: 1; line-height: 1.35; }
+
+/* Spacing when the video buttons sit under the media band */
+.video-links { margin-top: clamp(16px, 2vw, 24px); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   MEDIA BAND  (Who We Are video / Internship Program)
+   — matches the Foundation + Org Chart bands
+═══════════════════════════════════════════════════════════════════ */
+.org-band {
+  display: flex;
+  flex-direction: row;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1.5px solid rgba(0,112,185,0.16);
+  box-shadow: 0 8px 30px rgba(0,42,74,0.08), 0 1px 4px rgba(0,112,185,0.08);
+}
+.org-visual {
+  position: relative;
+  flex-shrink: 0;
+  width: clamp(220px, 34vw, 440px);
+  overflow: hidden;
+  background: linear-gradient(160deg, #0b2740 0%, #0070b9 100%);
+}
+.org-visual img,
+.org-visual video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+/* Line-art fallback sitting behind the video — shows if the file can't load */
+.org-fallback {
+  position: absolute; inset: 0;
+  z-index: 0;
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(24px, 3vw, 44px);
+}
+.org-fallback svg { width: 100%; height: auto; max-width: 260px; }
+.org-fallback svg rect, .org-fallback svg path, .org-fallback svg circle, .org-fallback svg polygon { stroke: rgba(255,255,255,0.72); }
+.org-fallback .node-fill { fill: rgba(255,255,255,0.10); }
+
+.org-controls {
+  position: absolute;
+  z-index: 3;
+  left: 0; right: 0; bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px;
+}
+.fv-btn {
+  width: 38px; height: 38px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.9);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+.fv-btn:hover { background: #fff; transform: translateY(-2px); }
+.fv-btn svg { width: 18px; height: 18px; }
+.fv-btn svg path, .fv-btn svg rect, .fv-btn svg line, .fv-btn svg polygon { stroke: var(--blue); }
+.org-body {
+  flex: 1;
+  padding: clamp(24px, 3vw, 48px);
+  display: flex; flex-direction: column; justify-content: center;
+  background: #f7fafd;
+  min-width: 0;
+}
+.org-kicker {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 12px;
+}
+.org-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 2.6vw, 34px);
+  font-weight: 700; color: var(--blue-dark); line-height: 1.12; margin-bottom: 14px;
+}
+.org-copy {
+  font-size: clamp(12px, 1.05vw, 14.5px); font-weight: 300; color: #5a6472;
+  line-height: 1.75; margin-bottom: 24px; max-width: 660px;
+}
+.org-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn-solid, .btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 24px;
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(11px, 1vw, 13px); font-weight: 600; letter-spacing: 0.03em;
+  border-radius: 9px; text-decoration: none; cursor: pointer;
+  transition: all var(--transition);
+}
+.btn-solid {
+  color: #fff; background: var(--blue); border: 1.5px solid var(--blue);
+  box-shadow: 0 6px 18px rgba(0,112,185,0.28);
+}
+.btn-solid:hover { background: var(--blue-dark); border-color: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,112,185,0.34); }
+.btn-ghost {
+  color: var(--blue); background: transparent; border: 1.5px solid rgba(0,112,185,0.35);
+}
+.btn-ghost:hover { background: var(--blue-soft); border-color: var(--blue); transform: translateY(-2px); }
+.btn-solid svg, .btn-ghost svg { width: 12px; height: 12px; }
+.btn-solid svg path { stroke: #fff; }
+.btn-ghost svg path { stroke: var(--blue); }
+
+/* Meta chips (internship stats) — matches the Playbook broadcast tags */
+.ba-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.ba-tag {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 14px; border-radius: 999px;
+  font-size: 12px; font-weight: 500; color: var(--ink);
+  background: var(--blue-soft);
+}
+.ba-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   PODCAST LIBRARY  (playlist rows)
+═══════════════════════════════════════════════════════════════════ */
+.pod-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.2vw, 14px);
+}
+.pod-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 1.8vw, 24px);
+  padding: clamp(16px, 1.8vw, 24px) clamp(18px, 2vw, 30px);
+  border-radius: 14px;
+  border: 1.5px solid rgba(0,112,185,0.14);
+  background: #f3f2f2;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05), 0 1px 4px rgba(0,112,185,0.07);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.pod-row::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--blue), rgba(0,112,185,0.25));
+}
+.pod-row:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0,112,185,0.32);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.10), 0 4px 14px rgba(0,112,185,0.14);
+}
+.pod-play {
+  flex-shrink: 0;
+  width: clamp(46px, 4.4vw, 58px);
+  height: clamp(46px, 4.4vw, 58px);
+  border-radius: 50%;
+  background: var(--blue-soft);
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--transition), transform var(--transition);
+}
+.pod-row:hover .pod-play { background: var(--blue); transform: scale(1.05); }
+.pod-play svg { width: 42%; height: 42%; margin-left: 2px; }
+.pod-play svg path { stroke: var(--blue); fill: var(--blue); }
+.pod-row:hover .pod-play svg path { stroke: #fff; fill: #fff; }
+
+.pod-body { flex: 1; min-width: 0; }
+.pod-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 4px;
+}
+.pod-title {
+  font-size: clamp(14px, 1.35vw, 17px);
+  font-weight: 600;
+  color: var(--blue);
+  line-height: 1.25;
+  margin-bottom: 5px;
+}
+.pod-desc {
+  font-size: clamp(11px, 1vw, 13px);
+  font-weight: 300;
+  color: var(--ink-light);
+  line-height: 1.6;
+  max-width: 72ch;
+}
+.pod-cta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(11px, 1vw, 13px);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #fff;
+  background: var(--blue);
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0,112,185,0.28);
+  transition: background var(--transition), box-shadow var(--transition);
+}
+.pod-row:hover .pod-cta {
+  background: var(--blue-dark);
+  box-shadow: 0 8px 20px rgba(0,112,185,0.34);
+}
+.pod-cta svg { width: 11px; height: 11px; transition: transform var(--transition); }
+.pod-row:hover .pod-cta svg { transform: translateX(3px); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   ANNUAL MEETING  (paired year columns, fixed height)
+═══════════════════════════════════════════════════════════════════ */
+.rec-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(16px, 2vw, 26px);
+  align-items: start;
+}
+.rec-col {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  border: 1.5px solid rgba(0,112,185,0.16);
+  background: var(--white);
+  box-shadow: 0 8px 28px rgba(0,42,74,0.08), 0 1px 4px rgba(0,112,185,0.06);
+  overflow: hidden;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.rec-col:hover {
+  border-color: rgba(0,112,185,0.30);
+  box-shadow: 0 16px 40px rgba(0,42,74,0.12), 0 3px 12px rgba(0,112,185,0.10);
+}
+
+/* ── Column header ──
+   The first column (2025) gets the brighter blue, the second (2024)
+   the deeper navy — most recent year reads first. */
+.rec-head {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  padding: clamp(20px, 2.2vw, 28px) clamp(20px, 2.2vw, 28px) clamp(16px, 1.8vw, 20px);
+  background: linear-gradient(150deg, #0b2740 0%, #003a63 55%, #00426f 100%);
+  overflow: hidden;
+}
+.rec-grid .rec-col:first-child .rec-head {
+  background: linear-gradient(150deg, #005c99 0%, #0070b9 55%, #1a8fd4 100%);
+}
+.rec-head::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(75% 110% at 85% 0%, rgba(255,255,255,0.18), transparent 62%);
+  pointer-events: none;
+}
+.rec-head-text { position: relative; z-index: 1; min-width: 0; }
+.rec-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.70);
+  margin-bottom: 9px;
+}
+.rec-eyebrow::before {
+  content: '';
+  width: 20px; height: 1.5px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.60);
+  flex-shrink: 0;
+}
+.rec-year {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 3.4vw, 44px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+.rec-head-meta {
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 4px;
+}
+.rec-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px calc(11px - 0.12em) 5px 11px;
+  line-height: 1;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.30);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+}
+.rec-count {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.80);
+  white-space: nowrap;
+}
+
+/* ── Scrolling list. Both columns share this height, so the section
+      never changes size no matter how many videos are in it. ── */
+.rec-list {
+  counter-reset: rec;
+  height: clamp(270px, 35vh, 370px);
+  padding-bottom: 8px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* legacy Edge */
+}
+.rec-list::-webkit-scrollbar { display: none; }   /* Chrome, Safari, Edge */
+
+/* ── Rows. Number and play glyph are drawn in CSS — the HTML for each
+      video is a single line. ── */
+.rec-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px clamp(18px, 2vw, 26px);
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid var(--rule);
+  transition: background var(--transition);
+}
+.rec-item:last-child { border-bottom: none; }
+.rec-item:hover, .rec-item:focus-visible { background: #f1f8fd; outline: none; }
+/* Accent bar that grows in from the left edge on hover */
+.rec-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0;
+  background: var(--blue);
+  transition: width var(--transition);
+}
+.rec-item:hover::before, .rec-item:focus-visible::before { width: 3px; }
+
+/* Auto number */
+.rec-num {
+  flex-shrink: 0;
+  width: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: rgba(0,112,185,0.50);
+  text-align: right;
+  transition: color var(--transition);
+}
+.rec-num::before {
+  counter-increment: rec;
+  content: counter(rec, decimal-leading-zero);
+}
+.rec-item:hover .rec-num, .rec-item:focus-visible .rec-num { color: var(--blue-dark); }
+
+/* Play triangle, drawn with borders so it stays crisp */
+.rec-item::after {
+  content: '';
+  flex-shrink: 0;
+  width: 0; height: 0;
+  border-left: 7px solid var(--blue);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  opacity: 0.28;
+  transition: opacity var(--transition), transform var(--transition);
+}
+.rec-item:hover::after, .rec-item:focus-visible::after { opacity: 1; transform: translateX(3px); }
+
+.rec-title {
+  flex: 1;
+  min-width: 0;
+  font-size: clamp(11.5px, 1vw, 13px);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.45;
+  transition: color var(--transition);
+}
+.rec-item:hover .rec-title, .rec-item:focus-visible .rec-title { color: var(--blue-dark); }
+
+@media (max-width: 900px) {
+  .rec-grid { grid-template-columns: 1fr; }
+  .rec-list { height: clamp(260px, 46vh, 340px); }
+}
+
+/* ─── RESPONSIVE ───────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .team-grid    { grid-template-columns: 1fr; }
+  .links-grid   { grid-template-columns: repeat(2, 1fr); }
+  .recap-grid   { grid-template-columns: 1fr; }
+  .org-band     { flex-direction: column; }
+  .org-visual   { width: 100%; height: 240px; }
+  .pod-row      { flex-wrap: wrap; }
+  .pod-cta      { width: 100%; justify-content: center; }
+}
+@media (max-width: 520px) {
+  .links-grid   { grid-template-columns: 1fr; }
+}
+
+/* ─── SCROLL REVEAL ───────────────────────────────────────────────── */
+.js-reveal .section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.js-reveal .section.in-view { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .section { opacity: 1 !important; transform: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- ═══════════════════════════════════════════════════
+     MEET THE TRAINING & DEVELOPMENT TEAM  (4 members — 2 rows of 2)
+     ▼ For each member, replace the name, title, mailto, and photo.
+       To add a photo, swap the .avatar-placeholder block for:
+       <img src="PHOTO_URL" alt="Name"> ▼
+════════════════════════════════════════════════════ -->
+<div class="section" id="training-team">
+  <div class="section-head">
+    <h2>
+      Meet the Training &amp; Development Team
+      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3.2" stroke-width="1.6"/><circle cx="17" cy="9" r="2.6" stroke-width="1.6"/><path d="M3 19c0-3.3 2.7-6 6-6s6 2.7 6 6M15 13c2.8 0 6 1.8 6 6" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </h2>
+    <p class="section-sub">From onboarding and system training to leadership development and continuing education, our Training &amp; Development team helps every teammate grow. Reach out to the right person below for whatever you need!</p>
+  </div>
+  <div class="divider"></div>
+
+  <div class="team-grid">
+
+    <!-- MEMBER 1 -->
+    <div class="team-card">
+      <div class="team-photo-col">
+        <img src="https://static.wixstatic.com/media/4f7dd4_f24ef4c3b6724106becc00b85b248b09~mv2.png" alt="Anna Larson">
+      </div>
+      <div class="team-info-col">
+        <div class="team-name">Anna Larson</div>
+        <div class="team-rule"></div>
+        <div class="team-title">Director of Training &amp; Development</div>
+        <a class="contact-link" href="mailto:anna@thegarrettco.com">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Contact Me
+        </a>
+      </div>
+    </div>
+
+    <!-- MEMBER 2 -->
+    <div class="team-card">
+      <div class="team-photo-col">
+        <img src="https://static.wixstatic.com/media/4f7dd4_5341ef86a4294878b81dfb83ec24464b~mv2.png" alt="Matthew Holweger">
+      </div>
+      <div class="team-info-col">
+        <div class="team-name">Matthew Holweger</div>
+        <div class="team-rule"></div>
+        <div class="team-title">Training Experience Manager</div>
+        <a class="contact-link" href="mailto:mholweger@thegarrettco.com">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Contact Me
+        </a>
+      </div>
+    </div>
+
+    <!-- MEMBER 3 -->
+    <div class="team-card">
+      <div class="team-photo-col">
+        <img src="https://static.wixstatic.com/media/4f7dd4_629fe3205690499cb4c97d63fe2bef6d~mv2.png" alt="Kim Brewer">
+      </div>
+      <div class="team-info-col">
+        <div class="team-name">Kim Brewer</div>
+        <div class="team-rule"></div>
+        <div class="team-title">Training Experience Manager</div>
+        <a class="contact-link" href="mailto:KBrewer@TheGarrettCo.com">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Contact Me
+        </a>
+      </div>
+    </div>
+
+    <!-- MEMBER 4 -->
+    <div class="team-card">
+      <div class="team-photo-col">
+        <img src="https://static.wixstatic.com/media/4f7dd4_572e8ce8a2ee4fa089a8f50632d5ce90~mv2.png" alt="Maddie Murdock">
+      </div>
+      <div class="team-info-col">
+        <div class="team-name">Maddie Murdock</div>
+        <div class="team-rule"></div>
+        <div class="team-title">Internship & Career Development Specialist</div>
+        <a class="contact-link" href="mailto:mmurdock@thegarrettco.com">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Contact Me
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     GARRETT GLOSSARY
+     ▼ Replace href="#" with the glossary link ▼
+════════════════════════════════════════════════════ -->
+<div class="section" id="glossary">
+  <div class="section-head">
+    <h2>
+      Garrett Glossary
+      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h11a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H6a2 2 0 0 0-2 2V5z" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 7h6M8 11h4" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </h2>
+    <p class="section-sub">From acronyms to industry terminology, the Garrett Glossary is your comprehensive list of the terms you'll hear every day.</p>
+  </div>
+  <div class="divider"></div>
+
+  <a class="feature-btn" href="https://thegarrettco2.sharepoint.com/:b:/s/SharepointResources/Eak3G1oKekxPjH_uOhRGcBkBEzBsbOqyTGyehJXRqXTQVA?e=ehI5iN" target="_blank" rel="noopener">
+    <span class="fb-panel">
+      <span class="fb-doc" aria-hidden="true">
+        <span class="fb-sheet fb-sheet-3"></span>
+        <span class="fb-sheet fb-sheet-2"></span>
+        <span class="fb-sheet fb-sheet-1">
+          <span class="fb-line fb-line-title"></span>
+          <span class="fb-line"></span>
+          <span class="fb-line"></span>
+          <span class="fb-line fb-line-short"></span>
+        </span>
+      </span>
+    </span>
+    <span class="fb-body">
+      <span class="fb-kicker">Speak the language</span>
+      <span class="fb-title">Garrett Glossary</span>
+      <span class="fb-desc">Acronyms, construction and development terminology, internal shorthand, and the terms that come up in meetings, drawings, and reports — defined in one place. New to the industry or new to Garrett? Start here.</span>
+      <span class="fb-cta">
+        Access the Glossary
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </span>
+  </a>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     WHO WE ARE
+     ▼ Paste the .mp4 URL in the video src below.
+       Replace each href="#" under the video with the real video link. ▼
+════════════════════════════════════════════════════ -->
+<div class="section" id="who-we-are">
+  <div class="section-head">
+    <h2>
+      Who We Are
+      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="5" width="14" height="14" rx="2" stroke-width="1.6"/><path d="M16 10l6-3.5v11L16 14" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    </h2>
+    <p class="section-sub">The fastest way to understand Garrett is to see it. Press play and meet the people, projects, and standards behind the name.</p>
+  </div>
+  <div class="divider"></div>
+
+  <div class="org-band">
+    <div class="org-visual">
+      <!-- ▼ Paste your .mp4 URL in the video src below ▼ -->
+      <video id="whoVideo" src="https://video.wixstatic.com/video/4f7dd4_179b1347af1144eb8fb40ee52025fa1a/1080p/mp4/file.mp4" autoplay muted loop playsinline
+             onerror="this.style.display='none';"></video>
+
+      <!-- Line-art fallback behind the video — shows only if the file can't load -->
+      <div class="org-fallback" aria-hidden="true">
+        <svg viewBox="0 0 300 200" fill="none">
+          <rect class="node-fill" x="46" y="42" width="150" height="104" rx="10" stroke-width="1.6"/>
+          <path class="node-fill" d="M196 78l52-24v92l-52-24V78z" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M108 76l40 22-40 22V76z" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="org-controls">
+        <button class="fv-btn" id="whoMute" type="button" aria-label="Unmute video" aria-pressed="false">
+          <svg class="fv-icon-muted" viewBox="0 0 24 24" fill="none"><path d="M11 5L6 9H3v6h3l5 4V5z" stroke-width="1.6" stroke-linejoin="round"/><line x1="23" y1="9" x2="17" y2="15" stroke-width="1.6" stroke-linecap="round"/><line x1="17" y1="9" x2="23" y2="15" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg class="fv-icon-sound" viewBox="0 0 24 24" fill="none" style="display:none;"><path d="M11 5L6 9H3v6h3l5 4V5z" stroke-width="1.6" stroke-linejoin="round"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8 8 0 0 1 0 12" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <button class="fv-btn" id="whoFull" type="button" aria-label="View video fullscreen">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="org-body">
+      <div class="org-kicker">Start Here</div>
+      <h3 class="org-title">Get to know Garrett in a few minutes</h3>
+      <p class="org-copy">This is the story of who we are — how we build, how we work together, and what we expect of ourselves on every project. Whether you're brand new or years in, it's a quick reminder of the standard we hold and the people behind it. Watch the full film here, then keep going with the videos below.</p>
+    </div>
+  </div>
+
+  <h3 class="sub-heading">More Videos</h3>
+  <div class="links-grid video-links">
+
+    <a class="link-btn" href="https://youtu.be/rabb1oGzl-o?si=Uq3VuXXaUcjjFDUM" target="_blank" rel="noopener">
+      <span class="link-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M6 21V11l6-4 6 4v10" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 21v-5h4v5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="link-label">Construction</span>
+    </a>
+
+    <a class="link-btn" href="https://youtu.be/fVdvheWGW1s?si=cSf0uvUjO-havcoF" target="_blank" rel="noopener">
+      <span class="link-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke-width="1.7" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke-width="1.7"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="link-label">We Collaborate</span>
+    </a>
+
+    <a class="link-btn" href="https://youtu.be/qPX_VQCj05A?si=tkrfkkW1PZLrPqlV" target="_blank" rel="noopener">
+      <span class="link-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.3-9.2-9C1.3 8.7 3.2 5 6.8 5c2 0 3.7 1.2 4.7 2.7C12.5 6.2 14.2 5 16.2 5c3.6 0 5.5 3.7 4 7-2.2 4.7-8.2 9-8.2 9z" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+      <span class="link-label">We Care</span>
+    </a>
+
+    <a class="link-btn" href="https://youtu.be/axnDvgg1xIQ?si=4A84zMCbaY5m0pTd" target="_blank" rel="noopener">
+      <span class="link-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke-width="1.7"/><path d="M12 11v5.5M12 7.8v.01" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+      <span class="link-label">About Us</span>
+    </a>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     OUR INTERNSHIP PROGRAM
+     ▼ Replace href="#" on both CTAs with the real links ▼
+════════════════════════════════════════════════════ -->
+<div class="section" id="internship">
+  <div class="section-head">
+    <h2>
+      Garrett Internship Program
+      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4L2 9l10 5 10-5-10-5z" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 11.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5M21 9.5v5" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </h2>
+    <p class="section-sub">Twelve weeks, real projects, and a front-row seat to how we build. Meet past interns and learn what a summer at Garrett looks like.</p>
+  </div>
+  <div class="divider"></div>
+
+  <div class="org-band">
+    <div class="org-visual">
+      <!-- ▼ Paste the GIP .mp4 URL in the video src below ▼ -->
+      <video id="gipVideo" src="https://video.wixstatic.com/video/4f7dd4_ce5126ce6a304dfc8487954473e1c843/1080p/mp4/file.mp4" autoplay muted loop playsinline
+             onerror="this.style.display='none';"></video>
+
+      <!-- Line-art fallback behind the video — shows only if the file can't load -->
+      <div class="org-fallback" aria-hidden="true">
+        <svg viewBox="0 0 300 200" fill="none">
+          <path d="M150 52L60 88l90 36 90-36-90-36z" stroke-width="1.8" stroke-linejoin="round"/>
+          <path class="node-fill" d="M150 52L60 88l90 36 90-36-90-36z" stroke="none"/>
+          <path d="M96 102v30c0 12 24 22 54 22s54-10 54-22v-30M240 88v34" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="240" cy="130" r="7" stroke-width="1.8"/>
+        </svg>
+      </div>
+
+      <div class="org-controls">
+        <button class="fv-btn" id="gipMute" type="button" aria-label="Unmute video" aria-pressed="false">
+          <svg class="fv-icon-muted" viewBox="0 0 24 24" fill="none"><path d="M11 5L6 9H3v6h3l5 4V5z" stroke-width="1.6" stroke-linejoin="round"/><line x1="23" y1="9" x2="17" y2="15" stroke-width="1.6" stroke-linecap="round"/><line x1="17" y1="9" x2="23" y2="15" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg class="fv-icon-sound" viewBox="0 0 24 24" fill="none" style="display:none;"><path d="M11 5L6 9H3v6h3l5 4V5z" stroke-width="1.6" stroke-linejoin="round"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8 8 0 0 1 0 12" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <button class="fv-btn" id="gipFull" type="button" aria-label="View video fullscreen">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="org-body">
+      <div class="org-kicker">Award-Winning Program</div>
+      <h3 class="org-title">Twelve weeks that launch careers</h3>
+      <p class="org-copy">Our award-winning 12-week summer internship program teaches students from universities all over the country what it's like to work in a fast-paced environment with real-life work experiences. Interns join active project teams, own meaningful work, and leave with skills — and relationships — that carry into their careers. Meet past interns and learn more about the program on the website.</p>
+      <div class="ba-meta">
+        <span class="ba-tag">12-week summer program</span>
+        <span class="ba-tag">Students nationwide</span>
+        <span class="ba-tag">Real project work</span>
+      </div>
+      <div class="org-actions">
+        <a class="btn-solid" href="https://thegarrettco2.sharepoint.com/SitePages/Garrett-Internship-Program.aspx?xsdata=MDV8MDJ8fDMxMDVjODE3YWNkMDQ2MmNlODJjMDhkZGNhZWE0MTNlfDc4OTE5NTQ5MzA1MjRmNmRiZDhkZWEwZGUxMTczODFhfDB8MHw2Mzg4ODk4Mjk2MjIyODIzNTZ8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKRFFTSTZJbFJsWVcxelgwRlVVRk5sY25acFkyVmZVMUJQVEU5R0lpd2lWaUk2SWpBdU1DNHdNREF3SWl3aVVDSTZJbGRwYmpNeUlpd2lRVTRpT2lKUGRHaGxjaUlzSWxkVUlqb3hNWDA9fDF8TDJOb1lYUnpMekU1T21JM1pXTmlNemc0TFRSa00yRXRORFkyTkMxaFlqa3dMV00xTURGbE5tTm1aV1ExWkY5aVpHUmlOVEptTkMxbE5qVmpMVFExTVRBdFltVmlOeTFqT1daak5qYzBPR1V4T0ROQWRXNXhMbWRpYkM1emNHRmpaWE12YldWemMyRm5aWE12TVRjMU16TTROakUyTURrNU13PT18MDgyMWI1ZjliYjI5NGU2YjVhMTYwOGRkY2FlYTQxM2V8NDcyYzVmMTA1YmEwNDAyNWE4ZDlmOTdjMjkzMGY1Mzk%3D&sdata=L2Q3NFdtcnE2WVZTdkMzL1FrVXVzRVJPMWZyRk1qQTVwSzI1aFk5VHdhND0%3D&ovuser=78919549-3052-4f6d-bd8d-ea0de117381a%2cAEdlund%40TheGarrettCo.com&OR=Teams-HL&CT=1753453926333&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI1MC8yNTA2MDIwNjYxNiIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D" target="_blank" rel="noopener">
+          Access GIP Playbook
+          <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn-ghost" href="https://www.thegarrettcointern.com/" target="_blank" rel="noopener">
+          Visit the Website
+          <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PODCAST LIBRARY
+     ▼ For each row, replace the title, description, and href ▼
+════════════════════════════════════════════════════ -->
+<div class="section" id="podcasts">
+  <div class="section-head">
+    <h2>
+      Podcast Library
+      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3" stroke-width="1.6"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4M9 22h6" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </h2>
+    <p class="section-sub">Conversations worth your commute. Listen in on the topics, teams, and lessons shaping how we work.</p>
+  </div>
+  <div class="divider"></div>
+
+  <div class="pod-list">
+
+    <!-- PODCAST 1 -->
+    <a class="pod-row" href="https://mentoringmomentsindianastate.podbean.com/e/eric-garrett/" target="_blank" rel="noopener">
+      <span class="pod-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+      <span class="pod-body">
+        <span class="pod-eyebrow">Episode 01</span>
+        <span class="pod-title">Mentoring Moments</span><br>
+        <span class="pod-desc">Building Culture, Defining Success, and Paying It Forward w/ Eric Garrett</span>
+      </span>
+      <span class="pod-cta">Listen Now
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+
+    <!-- PODCAST 2 -->
+    <a class="pod-row" href="https://open.spotify.com/episode/1TvJvXhdt0zactoqll7La8?si=UEt-Gx6IQSKVJO2jNtML0Q" target="_blank" rel="noopener">
+      <span class="pod-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+      <span class="pod-body">
+        <span class="pod-eyebrow">Episode 02</span>
+        <span class="pod-title">RPOA Real Estate Podcast</span><br>
+        <span class="pod-desc">Real Estate Rental Market Update and Analysis w/ Eric Garrett</span>
+      </span>
+      <span class="pod-cta">Listen Now
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+
+    <!-- PODCAST 3 -->
+    <a class="pod-row" href="https://www.youtube.com/watch?v=Ytu4dBklCWc" target="_blank" rel="noopener">
+      <span class="pod-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+      <span class="pod-body">
+        <span class="pod-eyebrow">Episode 03</span>
+        <span class="pod-title">IBJ Podcast</span><br>
+        <span class="pod-desc">From Humble Beginnings, Apartment Developer Built $500M Firm in 10 Years</span>
+      </span>
+      <span class="pod-cta">Listen Now
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+
+    <!-- PODCAST 4 -->
+    <a class="pod-row" href="https://www.buzzsprout.com/2085762/episodes/15193527" target="_blank" rel="noopener">
+      <span class="pod-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+      <span class="pod-body">
+        <span class="pod-eyebrow">Episode 04</span>
+        <span class="pod-title">Design Development</span><br>
+        <span class="pod-desc">Building a $500M+ Business Ecosystem with CEO Eric Garrett</span>
+      </span>
+      <span class="pod-cta">Listen Now
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+
+    <!-- PODCAST 5 -->
+    <a class="pod-row" href="https://www.youtube.com/watch?t=2538&v=ysDtHrvmcus&feature=youtu.be" target="_blank" rel="noopener">
+      <span class="pod-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+      <span class="pod-body">
+        <span class="pod-eyebrow">Episode 05</span>
+        <span class="pod-title">Indiana State University</span><br>
+        <span class="pod-desc">Winter 2024 Indiana State University Commencement Speech w/ Eric Garrett</span>
+      </span>
+      <span class="pod-cta">Listen Now
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     ANNUAL MEETING RECAP
+     ▼ One line per video: put the link in href and the
+       video name between the span tags ▼
+════════════════════════════════════════════════════ -->
+<div class="section" id="annual-meeting">
+  <div class="section-head">
+    <h2>
+      Annual Meeting Recap
+      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4" stroke-width="1.6" stroke-linecap="round"/><path d="M11 13.5l3.5 2-3.5 2v-4z" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    </h2>
+    <p class="section-sub">Missed it, or want to watch it again? Both years are here — pick a session and press play.</p>
+  </div>
+  <div class="divider"></div>
+
+  <div class="rec-grid">
+
+    <!-- ═══════ 2025 — 8 videos ═══════ -->
+    <div class="rec-col">
+     <div class="rec-head">
+        <div class="rec-head-text">
+          <span class="rec-eyebrow">2025 Annual Meeting</span>
+          <span class="rec-year">Indianapolis, IN</span>
+        </div>
+        <div class="rec-head-meta">
+          <span class="rec-badge">Latest</span>
+          <span class="rec-count">8 videos</span>
+        </div>
+      </div>
+      <div class="rec-list" tabindex="0" role="region" aria-label="2025 Annual Meeting videos">
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Events/Annual%20Meeting/2025%20Annual%20Meeting/Recordings/2025%20Annual%20Meeting/Day%20One/2025%20Annual%20Meeting%20-%20Day1%20Opening%20Message%20and%20Prayer.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Opening Prayer & Message - Pastor Danny Anderson</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Events/Annual%20Meeting/2025%20Annual%20Meeting/Recordings/2025%20Annual%20Meeting/Day%20One/2025%20Annual%20Meeting%20-%20Day1%20-%20Eric%20Garrett%20Opening%20Message.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">2025 Day 1 Opening & Kickoff - Eric Garrett</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Events/Annual%20Meeting/2025%20Annual%20Meeting/Recordings/2025%20Annual%20Meeting/Day%20One/2025%20Annual%20Meeting%20-%20Day1%20-%20Winning%20as%20One%20Leadership%20Panel.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Winning as One - A Leadership Panel</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Events/Annual%20Meeting/2025%20Annual%20Meeting/Recordings/2025%20Annual%20Meeting/Day%20One/2025%20Annual%20Meeting%20-%20Day1%20-%20The%207%20Ps.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">The 7 Ps of Success - Eric Garrett</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Events/Annual%20Meeting/2025%20Annual%20Meeting/Recordings/2025%20Annual%20Meeting/Day%20One/2025%20Annual%20Meeting%20-%20Day1%20-%20Raising%20the%20Standard%20Panel.%20mp4.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Raising the Standard - Expecting More Panel</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Events/Annual%20Meeting/2025%20Annual%20Meeting/Recordings/2025%20Annual%20Meeting/Day%20One/2025%20Annual%20Meeting%20-%20Day1%20-%20Beyond%20the%20Numbers%20-%20Partners%20Panel..mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Beyond the Numbers - How Partners See The Garrett Difference</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Events/Annual%20Meeting/2025%20Annual%20Meeting/Recordings/2025%20Annual%20Meeting/Day%20Two/2025%20Annual%20Meeting%20-%20Day2%20-%20Lead%20Regardless%20of%20Title.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Lead Regardless of Title Panel</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Events/Annual%20Meeting/2025%20Annual%20Meeting/Recordings/2025%20Annual%20Meeting/Day%20Two/2025%20Annual%20Meeting%20-%20Day2%20-%20Awards.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">2025 / 2026 TGC Awards Ceremony</span></a>
+      </div>
+    </div>
+
+    <!-- ═══════ 2024 — 20 videos ═══════ -->
+    <div class="rec-col">
+      <div class="rec-head">
+        <div class="rec-head-text">
+          <span class="rec-eyebrow">2024 Annual Meeting</span>
+          <span class="rec-year">Nashville, TN</span>
+        </div>
+        <div class="rec-head-meta">
+          <span class="rec-badge">Archive</span>
+          <span class="rec-count">20 videos</span>
+        </div>
+      </div>
+      <div class="rec-list" tabindex="0" role="region" aria-label="2024 Annual Meeting videos">
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Customer%20Service%20Panel%20-%202024%20Annual%20Meeting%20-%20Day%20One.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Customer Service Panel - Day One</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Driving%20Success%20Through%20Unity%20Panel%20-%202024%20Annual%20Meeting%20-%20Day%20One.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Driving Success Through Unity Panel - Day One</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Eric%20Garrett%20Opening%20Keynote%20-%202024%20Annual%20Meeting%20-%20Day%20One.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Eric Garrett Opening Keynote - Day One</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Founding%20Employees%20Panel%20-%202024%20Annual%20Meeting%20-%20Day%20One.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Founding Employees Panel - Day One</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/TimeQualityBudget%20Panel%20-%202024%20Annual%20Meeting%20-%20Day%20One.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Time, Quality, & Budget Panel - Day One</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Visionary%20Voices%20Leadership%20Panel%20-%202024%20Annual%20Meeting%20-%20Day%20One.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Visionary Voices Leadership Panel - Day One</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Project%20Life%20Cycle/1.%20Site%20Selection%20-%20Project%20Life%20Cycle%20-%202024%20Annual%20Meeting.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Project Life Cycle #1 - Site Selection</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Project%20Life%20Cycle/2.%20Pro%20Forma%20Overview%20-%20Project%20Life%20Cycle%20-%202024%20Annual%20Meeting.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Project Life Cycle #2 - Pro Forma Overview</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Project%20Life%20Cycle/3.%20Due%20Diligence-%20Project%20Life%20Cycle%20-%202024%20Annual%20Meeting.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Project Life Cycle #3 - Due Diligence</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Project%20Life%20Cycle/4.%20Design%20-%20Project%20Life%20Cycle%20-%202024%20Annual%20Meeting.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Project Life Cycle #4 - Design</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Project%20Life%20Cycle/5.%20Construction%20-%20Project%20Life%20Cycle%20-%202024%20Annual%20Meeting.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Project Life Cycle #5 - Construction</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Project%20Life%20Cycle/6.%20Property%20Management%20-%20Project%20Life%20Cycle%20-%202024%20Annual%20Meeting.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Project Life Cycle #6 - Property Management</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20Two/2024%20Recap%20and%202025%20Goals%20-%202024%20Annual%20Meeting%20-%20Day%20Two.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">2024 Recap & 2025 Goals - Day Two</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20Two/Construction%20Breakout%20Session%20-%202024%20Annual%20Meeting%20-%20Day%20Two.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Construction Breakout Session - Day Two</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20Two/JLL%20Capital%20Markets%20Overview%20Keynote%20-%202024%20Annual%20Meeting%20-%20Day%20Two.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">JLL Capital Markets Overview Keynote - Day Two</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20Two/Personal%20Growth%20for%20Team%20Success/1.%20Understanding%20%20Your%20PI%20-%202024%20Annual%20Meeting%20-%20Day%20Two.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Understanding Your PI - Day Two</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20Two/Personal%20Growth%20for%20Team%20Success/2.%20Effective%20Decision%20Making%20-%202024%20Annual%20Meeting%20-%20Day%20Two.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Effective Decision Making - Day Two</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20Two/Personal%20Growth%20for%20Team%20Success/3.%20Fostering%20Relationships%20-%202024%20Annual%20Meeting%20-%20Day%20Two.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Fostering Relationships - Day Two</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20Two/Personal%20Growth%20for%20Team%20Success/4.%20Being%20a%20Good%20Teammate%20-%202024%20Annual%20Meeting%20-%20Day%20Two%20.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Being a Good Teammate - Day Two</span></a>
+        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20Two/Personal%20Growth%20for%20Team%20Success/5.%20Growth%20Mindset%20Mastering%20Your%20Craft%20-%202024%20Annual%20Meeting%20-%20Day%20Two.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Growth Mindset & Mastering Your Craft - Day Two</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /page-wrap -->
+
+<script>
+/* ─── VIDEO CONTROLS  (Who We Are + Internship) ───────────────────── */
+(function() {
+  var players = [
+    { video: 'whoVideo', mute: 'whoMute', full: 'whoFull' },
+    { video: 'gipVideo', mute: 'gipMute', full: 'gipFull' }
+  ];
+
+  players.forEach(function(ids) {
+    var video   = document.getElementById(ids.video);
+    var muteBtn = document.getElementById(ids.mute);
+    var fullBtn = document.getElementById(ids.full);
+    if (!video || !muteBtn || !fullBtn) return;
+
+    var mutedIcon = muteBtn.querySelector('.fv-icon-muted');
+    var soundIcon = muteBtn.querySelector('.fv-icon-sound');
+
+    muteBtn.addEventListener('click', function() {
+      video.muted = !video.muted;
+      var on = !video.muted;
+      mutedIcon.style.display = on ? 'none' : 'block';
+      soundIcon.style.display = on ? 'block' : 'none';
+      muteBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      muteBtn.setAttribute('aria-label', on ? 'Mute video' : 'Unmute video');
+    });
+
+    fullBtn.addEventListener('click', function() {
+      var req = video.requestFullscreen || video.webkitRequestFullscreen || video.webkitEnterFullscreen;
+      if (req) req.call(video);
+    });
+  });
+})();
+
+/* ─── SCROLL REVEAL ───────────────────────────────────────────────── */
+(function() {
+  if (!('IntersectionObserver' in window)) return;
+  document.body.classList.add('js-reveal');
+  var sections = document.querySelectorAll('.section');
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  sections.forEach(function(s) { io.observe(s); });
+})();
+</script>
+</body>
+</html>
