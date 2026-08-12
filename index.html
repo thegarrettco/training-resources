@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Training Resources</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 /* ─── RESET & BASE ─────────────────────────────────────────────────── */
@@ -25,10 +25,14 @@ html { scroll-behavior: smooth; }
   --white:       #ffffff;
   --radius:      10px;
   --transition:  0.22s ease;
+
+  /* ▼ ONE PLACE TO CHANGE ALL TYPE ▼ */
+  --font-head:   'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:   'Poppins', 'Helvetica Neue', Arial, sans-serif;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   color: var(--ink);
   background: var(--white);
   -webkit-font-smoothing: antialiased;
@@ -45,15 +49,15 @@ body {
 .section-head.centered { text-align: center; }
 
 .section-head h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(26px, 3.2vw, 40px);
+  font-family: var(--font-head);
+  font-size: clamp(25px, 3vw, 38px);
   font-weight: 700;
   color: var(--blue-dark);
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
 }
 .section-head.centered h2 { justify-content: center; }
 
@@ -96,6 +100,7 @@ body {
 }
 
 .sub-heading {
+  font-family: var(--font-head);
   font-size: clamp(15px, 1.5vw, 19px);
   font-weight: 600;
   color: var(--ink);
@@ -198,7 +203,7 @@ body {
   margin-bottom: clamp(10px, 1.4vw, 18px);
 }
 .contact-link {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(9px, 0.78vw, 11px);
   font-weight: 600;
   letter-spacing: 0.07em;
@@ -335,12 +340,12 @@ body {
   flex-shrink: 0;
 }
 .fb-title {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-head);
   font-size: clamp(23px, 2.6vw, 33px);
   font-weight: 700;
   color: var(--blue-dark);
-  line-height: 1.1;
-  letter-spacing: -0.015em;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   margin-bottom: 10px;
 }
 .fb-desc {
@@ -359,7 +364,7 @@ body {
   padding: 13px 24px;
   border-radius: 10px;
   background: var(--blue);
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(11.5px, 1vw, 13px);
   font-weight: 600;
   letter-spacing: 0.03em;
@@ -395,7 +400,7 @@ body {
   gap: clamp(8px, 0.9vw, 12px);
   width: 100%;
   padding: clamp(12px, 1.3vw, 18px) clamp(12px, 1.5vw, 20px);
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(11px, 1.05vw, 14px);
   font-weight: 500;
   color: var(--white);
@@ -513,19 +518,38 @@ body {
   color: var(--blue); margin-bottom: 12px;
 }
 .org-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(22px, 2.6vw, 34px);
-  font-weight: 700; color: var(--blue-dark); line-height: 1.12; margin-bottom: 14px;
+  font-family: var(--font-head);
+  font-size: clamp(21px, 2.5vw, 33px);
+  font-weight: 700; color: var(--blue-dark); line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 14px;
 }
 .org-copy {
   font-size: clamp(12px, 1.05vw, 14.5px); font-weight: 300; color: #5a6472;
   line-height: 1.75; margin-bottom: 24px; max-width: 660px;
 }
-.org-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Action row — logo sits here as a third item, pushed to the right
+   (same pattern as the Playbook Foundation band) */
+.org-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;      /* vertically centers the logo against the buttons */
+  gap: 12px;
+}
+
+/* ▼ Horizontal logo — sits right of the last button ▼ */
+.org-logo {
+  height: clamp(34px, 3.6vw, 50px);   /* sized off height so it matches button height */
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-left: auto;                  /* pushes it to the far right of the row */
+}
+
 .btn-solid, .btn-ghost {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 13px 24px;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(11px, 1vw, 13px); font-weight: 600; letter-spacing: 0.03em;
   border-radius: 9px; text-decoration: none; cursor: pointer;
   transition: all var(--transition);
@@ -630,7 +654,7 @@ body {
   align-items: center;
   gap: 8px;
   padding: 11px 20px;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(11px, 1vw, 13px);
   font-weight: 600;
   letter-spacing: 0.03em;
@@ -713,12 +737,12 @@ body {
 }
 .rec-year {
   display: block;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(30px, 3.4vw, 44px);
+  font-family: var(--font-head);
+  font-size: clamp(26px, 3vw, 38px);
   font-weight: 700;
   color: #fff;
-  line-height: 0.92;
-  letter-spacing: -0.02em;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 .rec-head-meta {
   position: relative;
@@ -795,9 +819,11 @@ body {
 .rec-num {
   flex-shrink: 0;
   width: 20px;
-  font-family: 'Playfair Display', serif;
-  font-size: 12.5px;
+  font-family: var(--font-head);
+  font-size: 12px;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
   color: rgba(0,112,185,0.50);
   text-align: right;
   transition: color var(--transition);
@@ -846,6 +872,8 @@ body {
   .org-visual   { width: 100%; height: 240px; }
   .pod-row      { flex-wrap: wrap; }
   .pod-cta      { width: 100%; justify-content: center; }
+  /* let the logo sit left under the buttons instead of stranded right */
+  .org-logo     { margin-left: 0; }
 }
 @media (max-width: 520px) {
   .links-grid   { grid-template-columns: 1fr; }
@@ -1120,6 +1148,13 @@ body {
           Visit the Website
           <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
+
+        <!-- ▼▼▼ HORIZONTAL LOGO — same treatment as the Playbook Foundation band.
+                 Swap the src for the GIP lockup if you'd rather show that here. ▼▼▼ -->
+        <img class="org-logo"
+             src="https://static.wixstatic.com/media/4f7dd4_78b772f60ce04da5bf2e41fdba2f745f~mv2.png"
+             alt="The Garrett Company"
+             onerror="this.style.display='none';">
       </div>
     </div>
   </div>
