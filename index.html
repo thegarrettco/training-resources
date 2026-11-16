@@ -116,6 +116,88 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
+   FEATURE CTA CARDS  (top of page — Performance & Development /
+   Garrett Built Learning)
+   — same spec as the Company Resources, Marketing, and HR pages
+═══════════════════════════════════════════════════════════════════ */
+.cta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 26px);
+}
+/* Two cards on this page — remove class="two-up" from .cta-grid if a third card is added */
+.cta-grid.two-up { grid-template-columns: repeat(2, 1fr); }
+
+.cta-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(26px, 3vw, 42px);
+  border-radius: 16px;
+  border: 1.5px solid rgba(0,112,185,0.16);
+  background: #f3f2f2;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.05), 0 1px 4px rgba(0,112,185,0.07);
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  min-height: 210px;
+}
+.cta-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(120% 100% at 100% 0%, rgba(0,112,185,0.12), transparent 55%);
+  opacity: 0; transition: opacity var(--transition);
+}
+.cta-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0,112,185,0.34);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.10), 0 4px 14px rgba(0,112,185,0.14);
+}
+.cta-card:hover::before { opacity: 1; }
+.cta-icon {
+  position: relative;
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  background: var(--blue-soft);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+  transition: background var(--transition);
+}
+.cta-card:hover .cta-icon { background: var(--blue); }
+.cta-icon svg { width: 50%; height: 50%; }
+.cta-icon svg path, .cta-icon svg rect, .cta-icon svg circle, .cta-icon svg line { stroke: var(--blue); }
+.cta-card:hover .cta-icon svg path,
+.cta-card:hover .cta-icon svg rect,
+.cta-card:hover .cta-icon svg circle,
+.cta-card:hover .cta-icon svg line { stroke: #fff; }
+.cta-kicker {
+  position: relative;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-light); margin-bottom: 6px;
+}
+.cta-title {
+  position: relative;
+  font-family: var(--font-head);
+  font-size: clamp(19px, 2.1vw, 27px);
+  font-weight: 700; color: var(--blue-dark); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 8px;
+}
+.cta-desc {
+  position: relative;
+  font-size: clamp(11px, 1vw, 13.5px); font-weight: 300; color: var(--ink-light);
+  line-height: 1.6; max-width: 380px;
+}
+.cta-action {
+  position: relative;
+  margin-top: auto; padding-top: 20px;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: clamp(11px, 1vw, 13px); font-weight: 600; letter-spacing: 0.04em;
+  color: var(--blue);
+}
+.cta-action svg { width: 12px; height: 12px; transition: transform var(--transition); }
+.cta-card:hover .cta-action svg { transform: translateX(4px); }
+
+/* ═══════════════════════════════════════════════════════════════════
    TEAM  (Meet the Training & Development Team)
    — matches Office Managers / Marketing / HR exactly
 ═══════════════════════════════════════════════════════════════════ */
@@ -577,301 +659,17 @@ body {
 }
 .ba-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
 
-/* ═══════════════════════════════════════════════════════════════════
-   PODCAST LIBRARY  (playlist rows)
-═══════════════════════════════════════════════════════════════════ */
-.pod-list {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(10px, 1.2vw, 14px);
-}
-.pod-row {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: clamp(14px, 1.8vw, 24px);
-  padding: clamp(16px, 1.8vw, 24px) clamp(18px, 2vw, 30px);
-  border-radius: 14px;
-  border: 1.5px solid rgba(0,112,185,0.14);
-  background: #f3f2f2;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.05), 0 1px 4px rgba(0,112,185,0.07);
-  text-decoration: none;
-  color: inherit;
-  overflow: hidden;
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-}
-.pod-row::before {
-  content: '';
-  position: absolute; left: 0; top: 0; bottom: 0;
-  width: 4px;
-  background: linear-gradient(to bottom, var(--blue), rgba(0,112,185,0.25));
-}
-.pod-row:hover {
-  transform: translateY(-3px);
-  border-color: rgba(0,112,185,0.32);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.10), 0 4px 14px rgba(0,112,185,0.14);
-}
-.pod-play {
-  flex-shrink: 0;
-  width: clamp(46px, 4.4vw, 58px);
-  height: clamp(46px, 4.4vw, 58px);
-  border-radius: 50%;
-  background: var(--blue-soft);
-  display: flex; align-items: center; justify-content: center;
-  transition: background var(--transition), transform var(--transition);
-}
-.pod-row:hover .pod-play { background: var(--blue); transform: scale(1.05); }
-.pod-play svg { width: 42%; height: 42%; margin-left: 2px; }
-.pod-play svg path { stroke: var(--blue); fill: var(--blue); }
-.pod-row:hover .pod-play svg path { stroke: #fff; fill: #fff; }
-
-.pod-body { flex: 1; min-width: 0; }
-.pod-eyebrow {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-  margin-bottom: 4px;
-}
-.pod-title {
-  font-size: clamp(14px, 1.35vw, 17px);
-  font-weight: 600;
-  color: var(--blue);
-  line-height: 1.25;
-  margin-bottom: 5px;
-}
-.pod-desc {
-  font-size: clamp(11px, 1vw, 13px);
-  font-weight: 300;
-  color: var(--ink-light);
-  line-height: 1.6;
-  max-width: 72ch;
-}
-.pod-cta {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 20px;
-  font-family: var(--font-body);
-  font-size: clamp(11px, 1vw, 13px);
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  color: #fff;
-  background: var(--blue);
-  border-radius: 8px;
-  box-shadow: 0 4px 14px rgba(0,112,185,0.28);
-  transition: background var(--transition), box-shadow var(--transition);
-}
-.pod-row:hover .pod-cta {
-  background: var(--blue-dark);
-  box-shadow: 0 8px 20px rgba(0,112,185,0.34);
-}
-.pod-cta svg { width: 11px; height: 11px; transition: transform var(--transition); }
-.pod-row:hover .pod-cta svg { transform: translateX(3px); }
-
-/* ═══════════════════════════════════════════════════════════════════
-   ANNUAL MEETING  (paired year columns, fixed height)
-═══════════════════════════════════════════════════════════════════ */
-.rec-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(16px, 2vw, 26px);
-  align-items: start;
-}
-.rec-col {
-  display: flex;
-  flex-direction: column;
-  border-radius: 16px;
-  border: 1.5px solid rgba(0,112,185,0.16);
-  background: var(--white);
-  box-shadow: 0 8px 28px rgba(0,42,74,0.08), 0 1px 4px rgba(0,112,185,0.06);
-  overflow: hidden;
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-.rec-col:hover {
-  border-color: rgba(0,112,185,0.30);
-  box-shadow: 0 16px 40px rgba(0,42,74,0.12), 0 3px 12px rgba(0,112,185,0.10);
-}
-
-/* ── Column header ──
-   The first column (2025) gets the brighter blue, the second (2024)
-   the deeper navy — most recent year reads first. */
-.rec-head {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  gap: 14px;
-  padding: clamp(20px, 2.2vw, 28px) clamp(20px, 2.2vw, 28px) clamp(16px, 1.8vw, 20px);
-  background: linear-gradient(150deg, #0b2740 0%, #003a63 55%, #00426f 100%);
-  overflow: hidden;
-}
-.rec-grid .rec-col:first-child .rec-head {
-  background: linear-gradient(150deg, #005c99 0%, #0070b9 55%, #1a8fd4 100%);
-}
-.rec-head::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(75% 110% at 85% 0%, rgba(255,255,255,0.18), transparent 62%);
-  pointer-events: none;
-}
-.rec-head-text { position: relative; z-index: 1; min-width: 0; }
-.rec-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 9.5px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.70);
-  margin-bottom: 9px;
-}
-.rec-eyebrow::before {
-  content: '';
-  width: 20px; height: 1.5px;
-  border-radius: 2px;
-  background: rgba(255,255,255,0.60);
-  flex-shrink: 0;
-}
-.rec-year {
-  display: block;
-  font-family: var(--font-head);
-  font-size: clamp(26px, 3vw, 38px);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-}
-.rec-head-meta {
-  position: relative;
-  z-index: 1;
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-bottom: 4px;
-}
-.rec-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px calc(11px - 0.12em) 5px 11px;
-  line-height: 1;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.16);
-  border: 1px solid rgba(255,255,255,0.30);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #fff;
-  white-space: nowrap;
-}
-.rec-count {
-  font-size: 11px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.80);
-  white-space: nowrap;
-}
-
-/* ── Scrolling list. Both columns share this height, so the section
-      never changes size no matter how many videos are in it. ── */
-.rec-list {
-  counter-reset: rec;
-  height: clamp(270px, 35vh, 370px);
-  padding-bottom: 8px;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: none;        /* Firefox */
-  -ms-overflow-style: none;     /* legacy Edge */
-}
-.rec-list::-webkit-scrollbar { display: none; }   /* Chrome, Safari, Edge */
-
-/* ── Rows. Number and play glyph are drawn in CSS — the HTML for each
-      video is a single line. ── */
-.rec-item {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 12px clamp(18px, 2vw, 26px);
-  text-decoration: none;
-  color: inherit;
-  border-bottom: 1px solid var(--rule);
-  transition: background var(--transition);
-}
-.rec-item:last-child { border-bottom: none; }
-.rec-item:hover, .rec-item:focus-visible { background: #f1f8fd; outline: none; }
-/* Accent bar that grows in from the left edge on hover */
-.rec-item::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 0;
-  background: var(--blue);
-  transition: width var(--transition);
-}
-.rec-item:hover::before, .rec-item:focus-visible::before { width: 3px; }
-
-/* Auto number */
-.rec-num {
-  flex-shrink: 0;
-  width: 20px;
-  font-family: var(--font-head);
-  font-size: 12px;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.01em;
-  color: rgba(0,112,185,0.50);
-  text-align: right;
-  transition: color var(--transition);
-}
-.rec-num::before {
-  counter-increment: rec;
-  content: counter(rec, decimal-leading-zero);
-}
-.rec-item:hover .rec-num, .rec-item:focus-visible .rec-num { color: var(--blue-dark); }
-
-/* Play triangle, drawn with borders so it stays crisp */
-.rec-item::after {
-  content: '';
-  flex-shrink: 0;
-  width: 0; height: 0;
-  border-left: 7px solid var(--blue);
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  opacity: 0.28;
-  transition: opacity var(--transition), transform var(--transition);
-}
-.rec-item:hover::after, .rec-item:focus-visible::after { opacity: 1; transform: translateX(3px); }
-
-.rec-title {
-  flex: 1;
-  min-width: 0;
-  font-size: clamp(11.5px, 1vw, 13px);
-  font-weight: 500;
-  color: var(--ink);
-  line-height: 1.45;
-  transition: color var(--transition);
-}
-.rec-item:hover .rec-title, .rec-item:focus-visible .rec-title { color: var(--blue-dark); }
-
-@media (max-width: 900px) {
-  .rec-grid { grid-template-columns: 1fr; }
-  .rec-list { height: clamp(260px, 46vh, 340px); }
-}
-
 /* ─── RESPONSIVE ───────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .cta-grid     { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 900px) {
+  .cta-grid,
+  .cta-grid.two-up { grid-template-columns: 1fr; }
   .team-grid    { grid-template-columns: 1fr; }
   .links-grid   { grid-template-columns: repeat(2, 1fr); }
-  .recap-grid   { grid-template-columns: 1fr; }
   .org-band     { flex-direction: column; }
   .org-visual   { width: 100%; height: 240px; }
-  .pod-row      { flex-wrap: wrap; }
-  .pod-cta      { width: 100%; justify-content: center; }
   /* let the logo sit left under the buttons instead of stranded right */
   .org-logo     { margin-left: 0; }
 }
@@ -891,20 +689,58 @@ body {
 <div class="page-wrap">
 
 <!-- ═══════════════════════════════════════════════════
+     TOP CTAs — Performance & Development /
+                Garrett Built Learning
+     ▼ Drop the real destination into each href="" below ▼
+════════════════════════════════════════════════════ -->
+<div class="section" id="training-cta">
+  <div class="cta-grid two-up">
+
+    <!-- PERFORMANCE & DEVELOPMENT (15Five) -->
+    <a class="cta-card" href="https://thegarrettco.15five.com" target="_blank" rel="noopener">
+      <div class="cta-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h6v6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 21h18" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </div>
+      <div class="cta-kicker">Grow With Your Team</div>
+      <div class="cta-title">COACHing Conversations</div>
+      <p class="cta-desc">Coaching conversations, 1:1s, and surveys in 15Five — the place you and your manager stay aligned on goals and growth.</p>
+      <span class="cta-action">Open 15Five
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+
+    <!-- GARRETT BUILT LEARNING (Absorb LMS) -->
+    <a class="cta-card" href="https://thegarrettcompanies.myabsorb.com" target="_blank" rel="noopener">
+      <div class="cta-icon">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="12" rx="2" stroke-width="1.7"/><path d="M2 20h20" stroke-width="1.7" stroke-linecap="round"/><path d="M10 7.8l4.5 2.2-4.5 2.2V7.8z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="cta-kicker">Learning Platform</div>
+      <div class="cta-title">Garrett Built Learning</div>
+      <p class="cta-desc">Our learning management system, powered by Absorb — take assigned courses, track your progress, and build new skills on your schedule.</p>
+      <span class="cta-action">Start Learning
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
      MEET THE TRAINING & DEVELOPMENT TEAM  (4 members — 2 rows of 2)
      ▼ For each member, replace the name, title, mailto, and photo.
        To add a photo, swap the .avatar-placeholder block for:
        <img src="PHOTO_URL" alt="Name"> ▼
 ════════════════════════════════════════════════════ -->
 <div class="section" id="training-team">
-  <div class="section-head centered">
+  <div class="section-head">
     <h2>
       Meet the Training &amp; Development Team
       <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3.2" stroke-width="1.6"/><circle cx="17" cy="9" r="2.6" stroke-width="1.6"/><path d="M3 19c0-3.3 2.7-6 6-6s6 2.7 6 6M15 13c2.8 0 6 1.8 6 6" stroke-width="1.6" stroke-linecap="round"/></svg>
     </h2>
     <p class="section-sub">From onboarding and role-based training to leadership development, mentorship, and continuing education, our Training & Development team helps every teammate build the skills and knowledge to grow at Garrett. Find contact information for the team below!</p>
   </div>
-  <div class="divider centered"></div>
+  <div class="divider"></div>
 
   <div class="team-grid">
 
@@ -1157,172 +993,6 @@ body {
              onerror="this.style.display='none';">
       </div>
     </div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════════════════
-     PODCAST LIBRARY
-     ▼ For each row, replace the title, description, and href ▼
-════════════════════════════════════════════════════ -->
-<div class="section" id="podcasts">
-  <div class="section-head">
-    <h2>
-      Podcast Library
-      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3" stroke-width="1.6"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4M9 22h6" stroke-width="1.6" stroke-linecap="round"/></svg>
-    </h2>
-    <p class="section-sub">The conversations behind the work. Hear from the people, teams, and leaders shaping Garrett.</p>
-  </div>
-  <div class="divider"></div>
-
-  <div class="pod-list">
-
-    <!-- PODCAST 1 -->
-    <a class="pod-row" href="https://mentoringmomentsindianastate.podbean.com/e/eric-garrett/" target="_blank" rel="noopener">
-      <span class="pod-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
-      <span class="pod-body">
-        <span class="pod-eyebrow">Episode 01</span>
-        <span class="pod-title">Mentoring Moments</span><br>
-        <span class="pod-desc">Building Culture, Defining Success, and Paying It Forward w/ Eric Garrett</span>
-      </span>
-      <span class="pod-cta">Listen Now
-        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-    </a>
-
-    <!-- PODCAST 2 -->
-    <a class="pod-row" href="https://open.spotify.com/episode/1TvJvXhdt0zactoqll7La8?si=UEt-Gx6IQSKVJO2jNtML0Q" target="_blank" rel="noopener">
-      <span class="pod-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
-      <span class="pod-body">
-        <span class="pod-eyebrow">Episode 02</span>
-        <span class="pod-title">RPOA Real Estate Podcast</span><br>
-        <span class="pod-desc">Real Estate Rental Market Update and Analysis w/ Eric Garrett</span>
-      </span>
-      <span class="pod-cta">Listen Now
-        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-    </a>
-
-    <!-- PODCAST 3 -->
-    <a class="pod-row" href="https://www.youtube.com/watch?v=Ytu4dBklCWc" target="_blank" rel="noopener">
-      <span class="pod-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
-      <span class="pod-body">
-        <span class="pod-eyebrow">Episode 03</span>
-        <span class="pod-title">IBJ Podcast</span><br>
-        <span class="pod-desc">From Humble Beginnings, Apartment Developer Built $500M Firm in 10 Years</span>
-      </span>
-      <span class="pod-cta">Listen Now
-        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-    </a>
-
-    <!-- PODCAST 4 -->
-    <a class="pod-row" href="https://www.buzzsprout.com/2085762/episodes/15193527" target="_blank" rel="noopener">
-      <span class="pod-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
-      <span class="pod-body">
-        <span class="pod-eyebrow">Episode 04</span>
-        <span class="pod-title">Design Development</span><br>
-        <span class="pod-desc">Building a $500M+ Business Ecosystem with CEO Eric Garrett</span>
-      </span>
-      <span class="pod-cta">Listen Now
-        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-    </a>
-
-    <!-- PODCAST 5 -->
-    <a class="pod-row" href="https://www.youtube.com/watch?t=2538&v=ysDtHrvmcus&feature=youtu.be" target="_blank" rel="noopener">
-      <span class="pod-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
-      <span class="pod-body">
-        <span class="pod-eyebrow">Episode 05</span>
-        <span class="pod-title">Indiana State University</span><br>
-        <span class="pod-desc">Winter 2024 Indiana State University Commencement Speech w/ Eric Garrett</span>
-      </span>
-      <span class="pod-cta">Listen Now
-        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-    </a>
-
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════════════════
-     ANNUAL MEETING RECAP
-     ▼ One line per video: put the link in href and the
-       video name between the span tags ▼
-════════════════════════════════════════════════════ -->
-<div class="section" id="annual-meeting">
-  <div class="section-head">
-    <h2>
-      Annual Meeting Recap
-      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4" stroke-width="1.6" stroke-linecap="round"/><path d="M11 13.5l3.5 2-3.5 2v-4z" stroke-width="1.6" stroke-linejoin="round"/></svg>
-    </h2>
-    <p class="section-sub">Explore past Annual Meeting sessions anytime. Choose a session and press play.</p>
-  </div>
-  <div class="divider"></div>
-
-  <div class="rec-grid">
-
-    <!-- ═══════ 2025 — 8 videos ═══════ -->
-    <div class="rec-col">
-     <div class="rec-head">
-        <div class="rec-head-text">
-          <span class="rec-eyebrow">2025 Annual Meeting</span>
-          <span class="rec-year">Indianapolis, IN</span>
-        </div>
-        <div class="rec-head-meta">
-          <span class="rec-badge">2025</span>
-          <span class="rec-count">8 videos</span>
-        </div>
-      </div>
-      <div class="rec-list" tabindex="0" role="region" aria-label="2025 Annual Meeting videos">
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Events/Annual%20Meeting/2025%20Annual%20Meeting/Recordings/2025%20Annual%20Meeting/Day%20One/2025%20Annual%20Meeting%20-%20Day1%20Opening%20Message%20and%20Prayer.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Opening Prayer & Message - Pastor Danny Anderson</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Events/Annual%20Meeting/2025%20Annual%20Meeting/Recordings/2025%20Annual%20Meeting/Day%20One/2025%20Annual%20Meeting%20-%20Day1%20-%20Eric%20Garrett%20Opening%20Message.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">2025 Day 1 Opening & Kickoff - Eric Garrett</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Events/Annual%20Meeting/2025%20Annual%20Meeting/Recordings/2025%20Annual%20Meeting/Day%20One/2025%20Annual%20Meeting%20-%20Day1%20-%20Winning%20as%20One%20Leadership%20Panel.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Winning as One - A Leadership Panel</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Events/Annual%20Meeting/2025%20Annual%20Meeting/Recordings/2025%20Annual%20Meeting/Day%20One/2025%20Annual%20Meeting%20-%20Day1%20-%20The%207%20Ps.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">The 7 Ps of Success - Eric Garrett</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Events/Annual%20Meeting/2025%20Annual%20Meeting/Recordings/2025%20Annual%20Meeting/Day%20One/2025%20Annual%20Meeting%20-%20Day1%20-%20Raising%20the%20Standard%20Panel.%20mp4.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Raising the Standard - Expecting More Panel</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Events/Annual%20Meeting/2025%20Annual%20Meeting/Recordings/2025%20Annual%20Meeting/Day%20One/2025%20Annual%20Meeting%20-%20Day1%20-%20Beyond%20the%20Numbers%20-%20Partners%20Panel..mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Beyond the Numbers - How Partners See The Garrett Difference</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Events/Annual%20Meeting/2025%20Annual%20Meeting/Recordings/2025%20Annual%20Meeting/Day%20Two/2025%20Annual%20Meeting%20-%20Day2%20-%20Lead%20Regardless%20of%20Title.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Lead Regardless of Title Panel</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Events/Annual%20Meeting/2025%20Annual%20Meeting/Recordings/2025%20Annual%20Meeting/Day%20Two/2025%20Annual%20Meeting%20-%20Day2%20-%20Awards.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">2025 / 2026 TGC Awards Ceremony</span></a>
-      </div>
-    </div>
-
-    <!-- ═══════ 2024 — 20 videos ═══════ -->
-    <div class="rec-col">
-      <div class="rec-head">
-        <div class="rec-head-text">
-          <span class="rec-eyebrow">2024 Annual Meeting</span>
-          <span class="rec-year">Nashville, TN</span>
-        </div>
-        <div class="rec-head-meta">
-          <span class="rec-badge">2024</span>
-          <span class="rec-count">20 videos</span>
-        </div>
-      </div>
-      <div class="rec-list" tabindex="0" role="region" aria-label="2024 Annual Meeting videos">
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Customer%20Service%20Panel%20-%202024%20Annual%20Meeting%20-%20Day%20One.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Customer Service Panel - Day One</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Driving%20Success%20Through%20Unity%20Panel%20-%202024%20Annual%20Meeting%20-%20Day%20One.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Driving Success Through Unity Panel - Day One</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Eric%20Garrett%20Opening%20Keynote%20-%202024%20Annual%20Meeting%20-%20Day%20One.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Eric Garrett Opening Keynote - Day One</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Founding%20Employees%20Panel%20-%202024%20Annual%20Meeting%20-%20Day%20One.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Founding Employees Panel - Day One</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/TimeQualityBudget%20Panel%20-%202024%20Annual%20Meeting%20-%20Day%20One.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Time, Quality, & Budget Panel - Day One</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Visionary%20Voices%20Leadership%20Panel%20-%202024%20Annual%20Meeting%20-%20Day%20One.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Visionary Voices Leadership Panel - Day One</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Project%20Life%20Cycle/1.%20Site%20Selection%20-%20Project%20Life%20Cycle%20-%202024%20Annual%20Meeting.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Project Life Cycle #1 - Site Selection</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Project%20Life%20Cycle/2.%20Pro%20Forma%20Overview%20-%20Project%20Life%20Cycle%20-%202024%20Annual%20Meeting.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Project Life Cycle #2 - Pro Forma Overview</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Project%20Life%20Cycle/3.%20Due%20Diligence-%20Project%20Life%20Cycle%20-%202024%20Annual%20Meeting.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Project Life Cycle #3 - Due Diligence</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Project%20Life%20Cycle/4.%20Design%20-%20Project%20Life%20Cycle%20-%202024%20Annual%20Meeting.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Project Life Cycle #4 - Design</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Project%20Life%20Cycle/5.%20Construction%20-%20Project%20Life%20Cycle%20-%202024%20Annual%20Meeting.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Project Life Cycle #5 - Construction</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20One/Project%20Life%20Cycle/6.%20Property%20Management%20-%20Project%20Life%20Cycle%20-%202024%20Annual%20Meeting.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Project Life Cycle #6 - Property Management</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20Two/2024%20Recap%20and%202025%20Goals%20-%202024%20Annual%20Meeting%20-%20Day%20Two.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">2024 Recap & 2025 Goals - Day Two</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20Two/Construction%20Breakout%20Session%20-%202024%20Annual%20Meeting%20-%20Day%20Two.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Construction Breakout Session - Day Two</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20Two/JLL%20Capital%20Markets%20Overview%20Keynote%20-%202024%20Annual%20Meeting%20-%20Day%20Two.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">JLL Capital Markets Overview Keynote - Day Two</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20Two/Personal%20Growth%20for%20Team%20Success/1.%20Understanding%20%20Your%20PI%20-%202024%20Annual%20Meeting%20-%20Day%20Two.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Understanding Your PI - Day Two</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20Two/Personal%20Growth%20for%20Team%20Success/2.%20Effective%20Decision%20Making%20-%202024%20Annual%20Meeting%20-%20Day%20Two.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Effective Decision Making - Day Two</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20Two/Personal%20Growth%20for%20Team%20Success/3.%20Fostering%20Relationships%20-%202024%20Annual%20Meeting%20-%20Day%20Two.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Fostering Relationships - Day Two</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20Two/Personal%20Growth%20for%20Team%20Success/4.%20Being%20a%20Good%20Teammate%20-%202024%20Annual%20Meeting%20-%20Day%20Two%20.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Being a Good Teammate - Day Two</span></a>
-        <a class="rec-item" href="https://thegarrettco2.sharepoint.com/sites/Marketing/Marketing/01%20Corporate/Photos_Videos/Videography/2024/2024%20Annual%20Meeting/Playbook%20Videos/Day%20Two/Personal%20Growth%20for%20Team%20Success/5.%20Growth%20Mindset%20Mastering%20Your%20Craft%20-%202024%20Annual%20Meeting%20-%20Day%20Two.mp4?web=1" target="_blank" rel="noopener"><span class="rec-num"></span><span class="rec-title">Growth Mindset & Mastering Your Craft - Day Two</span></a>
-      </div>
-    </div>
-
   </div>
 </div>
 
